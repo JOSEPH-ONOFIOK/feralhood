@@ -54,9 +54,10 @@ export default function Nav() {
           whileHover={{ scale: 1.06, rotateX: -8 }}
           whileTap={{ scale: 0.95, rotateX: 0 }}
           style={{ transformPerspective: 400 }}
-          className="glow-ring rounded-full bg-[color:var(--color-neon)] px-4 py-2 text-sm font-extrabold text-[#0c0618] shadow-lg shrink-0"
+          className="glow-ring rounded-full bg-[color:var(--color-neon)] px-3 sm:px-4 py-2 text-xs sm:text-sm font-extrabold text-[#0c0618] shadow-lg shrink-0"
         >
-          Join Allowlist
+          <span className="sm:hidden">Join</span>
+          <span className="hidden sm:inline">Join Allowlist</span>
         </motion.button>
       </nav>
     </motion.header>

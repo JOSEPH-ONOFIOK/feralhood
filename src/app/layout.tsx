@@ -3,6 +3,7 @@ import { Baloo_2, Nunito } from "next/font/google";
 import "./globals.css";
 import { AllowlistModalProvider } from "@/components/AllowlistModalContext";
 import AllowlistModal from "@/components/AllowlistModal";
+import PageIntro from "@/components/PageIntro";
 
 const baloo = Baloo_2({
   variable: "--font-baloo",
@@ -52,6 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${baloo.variable} ${nunito.variable} antialiased`}>
+        <PageIntro />
         <AllowlistModalProvider>
           {children}
           <AllowlistModal />

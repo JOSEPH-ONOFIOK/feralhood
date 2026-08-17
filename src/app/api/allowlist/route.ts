@@ -28,7 +28,11 @@ export async function POST(req: NextRequest) {
     const upstream = await fetch(WEBAPP_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ handle, wallet }),
+      // `inviteCode` is a compatibility shim, not a real field: the older
+      // deployed Apps Script rejects any payload missing it. The updated
+      // script ignores it entirely, so this is safe either way -- drop it
+      // once the new script is deployed everywhere.
+      body: JSON.stringify({ handle, wallet, inviteCode: "n/a" }),
     });
     const data = await upstream.json();
 

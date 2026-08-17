@@ -37,7 +37,7 @@ const TASKS: Task[] = [
   },
   {
     id: "tag",
-    label: `Tag ${TAG_FRIEND_COUNT} friends`,
+    label: `Tag ${TAG_FRIEND_COUNT} friends in the comments`,
     href: tagIntentUrl(),
     requiresLink: true,
   },

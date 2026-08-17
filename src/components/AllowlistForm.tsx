@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import CountUp from "./CountUp";
 import XQuest from "./XQuest";
 
 type Status = "idle" | "loading" | "success" | "error" | "duplicate";
@@ -13,27 +12,16 @@ export default function AllowlistForm() {
   const [xUsername, setXUsername] = useState<string | null>(null);
   const [questReady, setQuestReady] = useState(false);
   const [wallet, setWallet] = useState("");
-  const [inviteCode, setInviteCode] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const [position, setPosition] = useState<number | null>(null);
-  const [count, setCount] = useState<number | null>(null);
-
-  useEffect(() => {
-    fetch("/api/allowlist")
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data) => {
-        if (data && typeof data.count === "number") setCount(data.count);
-      })
-      .catch(() => {});
-  }, []);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
-    if (!xUsername || !wallet.trim() || !inviteCode.trim()) {
+    if (!xUsername || !wallet.trim()) {
       setStatus("error");
-      setMessage("Fill in every field. The mushrooms are picky.");
+      setMessage("Drop your wallet address to finish.");
       return;
     }
     if (!WALLET_RE.test(wallet.trim())) {
@@ -52,7 +40,6 @@ export default function AllowlistForm() {
         body: JSON.stringify({
           handle: `@${xUsername}`,
           wallet: wallet.trim(),
-          inviteCode: inviteCode.trim(),
         }),
       });
       const data = await res.json();
@@ -69,7 +56,6 @@ export default function AllowlistForm() {
 
       setStatus("success");
       setPosition(data.position ?? null);
-      setCount((c) => (typeof c === "number" ? c + 1 : c));
     } catch {
       setStatus("error");
       setMessage("Couldn't reach the hood. Check your connection and retry.");
@@ -88,18 +74,8 @@ export default function AllowlistForm() {
           <span className="text-[color:var(--color-neon)] text-glow-neon">Allowlist</span>
         </h2>
         <p className="mt-3 text-white/60">
-          Complete the quest, then drop your wallet and invite code. First come, first foraged.
+          Complete the quest, then drop your wallet. First come, first foraged.
         </p>
-        {typeof count === "number" && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="mt-3 inline-block rounded-full bg-white/5 px-4 py-1 text-sm font-bold text-[color:var(--color-neon-soft)]"
-          >
-            <CountUp value={count} /> {count === 1 ? "critter" : "critters"} already in the
-            hood
-          </motion.p>
-        )}
       </div>
 
       {!isDone && (
@@ -172,12 +148,6 @@ export default function AllowlistForm() {
                 value={wallet}
                 onChange={setWallet}
                 mono
-              />
-              <Field
-                label="Invite code"
-                placeholder="FERAL-XXXX"
-                value={inviteCode}
-                onChange={setInviteCode}
               />
 
               <AnimatePresence>

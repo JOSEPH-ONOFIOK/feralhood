@@ -14,7 +14,7 @@
  */
 
 const SHEET_NAME = "Allowlist";
-const HEADERS = ["Timestamp", "Handle", "Wallet", "Invite Code"];
+const HEADERS = ["Timestamp", "Handle", "Wallet"];
 
 function getSheet_() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -46,10 +46,9 @@ function doPost(e) {
 
   const handle = String(data.handle || "").trim();
   const wallet = String(data.wallet || "").trim();
-  const inviteCode = String(data.inviteCode || "").trim();
 
-  if (!handle || !wallet || !inviteCode) {
-    return json_({ error: "Missing handle, wallet, or inviteCode." });
+  if (!handle || !wallet) {
+    return json_({ error: "Missing handle or wallet." });
   }
 
   // Dedupe on wallet (case-insensitive), same rule as the app's own check.
@@ -60,7 +59,7 @@ function doPost(e) {
     }
   }
 
-  sheet.appendRow([new Date(), handle, wallet, inviteCode]);
+  sheet.appendRow([new Date(), handle, wallet]);
   const position = sheet.getLastRow() - 1; // exclude header row
 
   return json_({ ok: true, position: position });

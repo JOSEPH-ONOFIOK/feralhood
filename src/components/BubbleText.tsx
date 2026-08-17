@@ -13,7 +13,7 @@ export default function BubbleText({
   words,
   className = "",
   neonWords = [],
-  size = "text-[clamp(2.6rem,9vw,7rem)]",
+  size = "text-[clamp(3.5rem,15vw,7rem)]",
 }: BubbleTextProps) {
   return (
     <div className={`flex flex-wrap justify-center gap-x-5 ${className}`}>

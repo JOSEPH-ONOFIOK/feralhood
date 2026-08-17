@@ -11,7 +11,7 @@ const stats = [
 
 export default function ChainSection() {
   return (
-    <section id="chain" className="relative overflow-hidden py-24 sm:py-32">
+    <section id="chain" className="relative overflow-hidden py-16 sm:py-32">
       <FloatingShapes3D count={5} seed={19} minSize={28} maxSize={70} />
 
       <div

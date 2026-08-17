@@ -42,32 +42,38 @@ body {
 .bubble-text {
   display: inline-block;
   font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: 0.01em;
+  font-weight: 800;
+  letter-spacing: 0.005em;
   background-image: linear-gradient(
     135deg,
     var(--color-hood-yellow) 0%,
-    var(--color-hood-orange) 20%,
-    var(--color-hood-pink) 45%,
-    var(--color-hood-purple) 70%,
+    var(--color-hood-orange) 22%,
+    var(--color-hood-pink) 48%,
+    var(--color-hood-purple) 72%,
     var(--color-neon) 100%
   );
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: clamp(2px, 0.4vw, 4px) #0c0618;
-  paint-order: stroke fill;
-  text-shadow:
-    2px 2px 0 #0c0618,
-    4px 4px 0 #0c0618,
-    6px 6px 0 #0c0618,
-    8px 8px 0 #0c0618,
-    10px 14px 24px rgba(0, 0, 0, 0.55);
+  /* The 3D extrude must use drop-shadow, not text-shadow: with
+     background-clip:text the gradient paints as a background, and text-shadow
+     is painted *over* it, which would blanket the fill and leave only a sliver
+     of gradient at the glyph's top edge. drop-shadow composites behind. */
+  filter:
+    drop-shadow(0 0.03em 0 #3a1f63)
+    drop-shadow(0 0.06em 0 #2a1650)
+    drop-shadow(0 0.09em 0.02em rgba(0, 0, 0, 0.55))
+    drop-shadow(0 0 0.35em rgba(255, 62, 165, 0.45));
 }
 
 .bubble-text.neon-word {
-  background-image: linear-gradient(135deg, var(--color-neon-soft), var(--color-neon) 60%, #1fbf00);
+  background-image: linear-gradient(135deg, var(--color-neon-soft), var(--color-neon) 55%, #1fbf00);
+  filter:
+    drop-shadow(0 0.03em 0 #1f5c16)
+    drop-shadow(0 0.06em 0 #14380e)
+    drop-shadow(0 0.09em 0.02em rgba(0, 0, 0, 0.55))
+    drop-shadow(0 0 0.35em rgba(57, 255, 20, 0.5));
 }
 
 /* ---------- Neon utilities ---------- */

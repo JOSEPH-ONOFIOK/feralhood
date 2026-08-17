@@ -11,7 +11,7 @@ export default function CharacterGallery() {
   const { open } = useAllowlistModal();
 
   return (
-    <section id="hood" className="relative mx-auto max-w-6xl overflow-hidden px-4 py-24 sm:py-32">
+    <section id="hood" className="relative mx-auto max-w-6xl overflow-hidden px-4 py-16 sm:py-32">
       <FloatingShapes3D count={6} seed={11} minSize={26} maxSize={70} />
 
       <motion.div

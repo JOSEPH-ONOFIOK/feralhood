@@ -47,7 +47,9 @@ export default function AllowlistModal() {
             style={{ transformPerspective: 1600 }}
             className="relative my-8 w-full max-w-2xl overflow-hidden rounded-[2rem] border-2 border-[color:var(--color-neon)]/40 bg-[color:var(--color-ink-card)] shadow-[0_0_140px_rgba(57,255,20,0.25)]"
           >
-            <FloatingShapes3D count={5} seed={29} minSize={24} maxSize={60} />
+            {/* Kept sparse and small: this panel is a form, so ambience must
+                not compete with the labels sitting above it. */}
+            <FloatingShapes3D count={3} seed={29} minSize={18} maxSize={38} />
             <div
               className="blob h-[32vw] w-[32vw] left-1/2 top-0 -translate-x-1/2 -translate-y-1/2"
               style={{ background: "var(--color-hood-pink)", opacity: 0.2 }}

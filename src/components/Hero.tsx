@@ -104,7 +104,7 @@ export default function Hero() {
         </motion.div>
 
         <BubbleText words={["FERAL"]} neonWords={[]} />
-        <BubbleText words={["HOOD"]} neonWords={[0]} className="-mt-2 sm:-mt-4" />
+        <BubbleText words={["HOOD"]} neonWords={[0]} className="-mt-1 sm:-mt-3" />
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}

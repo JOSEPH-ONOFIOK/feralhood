@@ -38,9 +38,9 @@ export default function BubbleText({
             transition: { duration: 0.5, ease: "easeInOut" },
           }}
           style={{ transformPerspective: 700 }}
-          className={`bubble-text ${size} ${neonWords.includes(i) ? "neon-word" : ""} leading-[0.95] inline-block`}
+          className={`bubble-text ${size} ${neonWords.includes(i) ? "neon-word" : ""} leading-[0.95]`}
         >
-          <span className="grad">{word}</span>
+          {word}
         </motion.span>
       ))}
     </div>

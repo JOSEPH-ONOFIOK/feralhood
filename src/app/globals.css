@@ -40,14 +40,10 @@ body {
 /* ---------- Bubble / 3D word text ---------- */
 
 .bubble-text {
+  display: inline-block;
   font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: 0.01em;
-  -webkit-text-stroke: clamp(2px, 0.4vw, 4px) #0c0618;
-  paint-order: stroke fill;
-}
-
-.bubble-text .grad {
   background-image: linear-gradient(
     135deg,
     var(--color-hood-yellow) 0%,
@@ -59,6 +55,9 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: clamp(2px, 0.4vw, 4px) #0c0618;
+  paint-order: stroke fill;
   text-shadow:
     2px 2px 0 #0c0618,
     4px 4px 0 #0c0618,
@@ -67,7 +66,7 @@ body {
     10px 14px 24px rgba(0, 0, 0, 0.55);
 }
 
-.bubble-text.neon-word .grad {
+.bubble-text.neon-word {
   background-image: linear-gradient(135deg, var(--color-neon-soft), var(--color-neon) 60%, #1fbf00);
 }
 

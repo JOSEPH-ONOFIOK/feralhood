@@ -35,7 +35,7 @@ export default function Nav() {
               className="object-cover"
             />
           </motion.span>
-          <span className="font-[family-name:var(--font-baloo)] text-lg font-bold tracking-wide text-white hidden sm:inline">
+          <span className="font-[family-name:var(--font-baloo)] text-base sm:text-lg font-bold tracking-wide text-white">
             Feral<span className="text-glow-neon text-[color:var(--color-neon)]">Hood</span>
           </span>
         </a>

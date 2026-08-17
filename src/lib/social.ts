@@ -1,10 +1,10 @@
 export const X_HANDLE = "feralhoodnft";
 export const X_PROFILE_URL = `https://x.com/${X_HANDLE}`;
 
-// Fill this in with the exact pinned post URL (e.g. https://x.com/feralhoodnft/status/1234567890123456789)
-// to get precise like/retweet/quote deep-links. Until then, tasks link to
-// the profile with instructions to find the pinned post there.
-export const PINNED_TWEET_URL = "";
+// The pinned post every quest task points at. Swap this whenever the pinned
+// post changes; the like/retweet/quote/reply deep-links all derive from it.
+export const PINNED_TWEET_URL =
+  "https://x.com/feralhoodnft/status/2089336456607142276";
 
 /** Exact phrase the quote post must be published with. */
 export const QUOTE_TEXT = "welcome to the wild side of the hood";
@@ -36,11 +36,16 @@ export function quoteIntentUrl(): string {
   return `https://twitter.com/intent/tweet?${params.toString()}`;
 }
 
-/** Compose a post for tagging friends, leaving the handles for the user. */
+/**
+ * Compose a reply to the pinned post for tagging friends, leaving the handles
+ * for the user to fill in.
+ */
 export function tagIntentUrl(): string {
+  const id = pinnedTweetId();
   const params = new URLSearchParams({
-    text: `${QUOTE_TEXT} 🍄 @${X_HANDLE} — tagging ${TAG_FRIEND_COUNT} foragers: `,
+    text: `Tagging ${TAG_FRIEND_COUNT} foragers 🍄 `,
   });
+  if (id) params.set("in_reply_to", id);
   return `https://twitter.com/intent/tweet?${params.toString()}`;
 }
 

@@ -96,7 +96,8 @@ export default function AllowlistForm() {
             animate={{ opacity: 1 }}
             className="mt-3 inline-block rounded-full bg-white/5 px-4 py-1 text-sm font-bold text-[color:var(--color-neon-soft)]"
           >
-            <CountUp value={count} /> critters already in the hood
+            <CountUp value={count} /> {count === 1 ? "critter" : "critters"} already in the
+            hood
           </motion.p>
         )}
       </div>

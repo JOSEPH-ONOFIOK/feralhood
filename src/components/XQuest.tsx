@@ -41,7 +41,7 @@ const TASKS: Task[] = [
     href: tagIntentUrl(),
     requiresLink: true,
   },
-];
+];-
 
 const TOTAL_STEPS = TASKS.length + 1; // + connecting X
 

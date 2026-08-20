@@ -4,7 +4,7 @@ export const X_PROFILE_URL = `https://x.com/${X_HANDLE}`;
 // The pinned post every quest task points at. Swap this whenever the pinned
 // post changes; the like/retweet/quote/reply deep-links all derive from it.
 export const PINNED_TWEET_URL =
-  "https://x.com/feralhoodnft/status/2089336456607142276";
+  "https://x.com/feralhoodnft/status/2090423616911417654?s=46";
 
 /** Exact phrase the quote post must be published with. */
 export const QUOTE_TEXT = "welcome to the wild side of the hood";

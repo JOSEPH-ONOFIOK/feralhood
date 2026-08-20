@@ -40,8 +40,8 @@ const TASKS: Task[] = [
     label: `Tag ${TAG_FRIEND_COUNT} friends in the comments`,
     href: tagIntentUrl(),
     requiresLink: true,
-  },
-];-
+},
+];
 
 const TOTAL_STEPS = TASKS.length + 1; // + connecting X
 
